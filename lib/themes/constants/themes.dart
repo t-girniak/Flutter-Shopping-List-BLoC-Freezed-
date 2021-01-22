@@ -28,7 +28,7 @@ class AppThemes {
       ),
       headline6: TextStyle(
           fontSize: 24.0,
-          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.bold,
           color: AppColors.mustard),
       bodyText2: TextStyle(
         fontSize: 14.0,
@@ -62,7 +62,7 @@ class AppThemes {
       ),
       headline6: TextStyle(
         fontSize: 24.0,
-        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.bold,
         color: AppColors.black,
       ),
       bodyText2: TextStyle(
