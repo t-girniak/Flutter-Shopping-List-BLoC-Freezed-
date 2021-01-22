@@ -13,21 +13,24 @@ class AppDrawer extends StatelessWidget {
         return Drawer(
           child: ListView(
             children: [
-              SizedBox(
-                height: 24,
-              ),
-              Center(
-                child: Text(
-                  'Shopping list',
-                  style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+              Container(
+                color: Theme.of(context).accentColor,
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(
+                    child: Text(
+                      'Shopping list',
+                      style: Theme.of(context).textTheme.headline6.merge(
+                            TextStyle(
+                              color: Theme.of(context).backgroundColor,
+                            ),
+                          ),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
