@@ -5,11 +5,18 @@ part 'edit_item_state.freezed.dart';
 
 @freezed
 abstract class EditItemState with _$EditItemState {
+  const factory EditItemState.saved({
+    ShoppingItem shoppingItem,
+  }) = _ItemSaved;
+
   const factory EditItemState.updated({
     ShoppingItem shoppingItem,
   }) = _ItemUpdated;
 
   const factory EditItemState.initial({
-    @Default(ShoppingItem(title: '')) ShoppingItem shoppingItem,
+    @Default(ShoppingItem(
+      title: '',
+    ))
+        ShoppingItem shoppingItem,
   }) = _ItemInitial;
 }

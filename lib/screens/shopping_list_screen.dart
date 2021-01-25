@@ -30,7 +30,17 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter shopping list'),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.delete,
+            ),
+            onPressed: () {
+              BlocProvider.of<ShoppingListCubit>(context).deleteAllItems();
+            },
+          )
+        ],
+        title: Text("Flutter shopping list"),
       ),
       drawer: AppDrawer(),
       body: BlocConsumer<ShoppingListCubit, ShoppingListState>(
@@ -38,11 +48,8 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
           loaded: (value) => value.isEmpty
               ? Center(
                   child: Text(
-                    'Add something to your list 📝',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    'Your shopping list is empty',
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 )
               : ShoppingList(),
@@ -51,7 +58,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
           ),
           error: (value) => Center(
             child: Text(
-              'An unexpected error had been occurred :*',
+              'An unexpected error occurred :*',
               style: TextStyle(
                 color: Colors.red,
               ),

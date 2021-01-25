@@ -16,7 +16,7 @@ class AppDrawer extends StatelessWidget {
               Container(
                 color: Theme.of(context).accentColor,
                 child: Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.all(52),
                   child: Center(
                     child: Text(
                       'Shopping list',

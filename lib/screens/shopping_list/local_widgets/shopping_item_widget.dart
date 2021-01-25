@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shopping_list/models/shopping_item/shopping_item.dart';
+import 'package:flutter_shopping_list/screens/shopping_list/cubit/shopping_list_cubit/shopping_list_cubit.dart';
 
 class ShoppingItemWidget extends StatefulWidget {
   final ShoppingItem shoppingItem;
@@ -39,15 +41,33 @@ class _ShoppingItemWidgetState extends State<ShoppingItemWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 8),
-              child: Text(widget.shoppingItem.title),
+            Row(
+              children: [
+                SizedBox(width: 8),
+                Icon(
+                  Icons.assistant_photo_rounded,
+                  color: widget.shoppingItem.color,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  widget.shoppingItem.title,
+                  style: widget.shoppingItem.checked
+                      ? Theme.of(context).textTheme.bodyText1.merge(TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            decorationThickness: 2,
+                          ))
+                      : Theme.of(context).textTheme.bodyText1,
+                )
+              ],
             ),
             Checkbox(
-              checkColor: Colors.blue,
-              activeColor: Colors.blue,
-              value: false,
-              onChanged: null,
+              checkColor: Theme.of(context).cardColor,
+              value: widget.shoppingItem?.checked ?? false,
+              onChanged: (value) {
+                BlocProvider.of<ShoppingListCubit>(context).checkItem(
+                  widget.shoppingItem,
+                );
+              },
             )
           ],
         ),

@@ -14,6 +14,13 @@ class _$EditItemStateTearOff {
   const _$EditItemStateTearOff();
 
 // ignore: unused_element
+  _ItemSaved saved({ShoppingItem shoppingItem}) {
+    return _ItemSaved(
+      shoppingItem: shoppingItem,
+    );
+  }
+
+// ignore: unused_element
   _ItemUpdated updated({ShoppingItem shoppingItem}) {
     return _ItemUpdated(
       shoppingItem: shoppingItem,
@@ -39,22 +46,26 @@ mixin _$EditItemState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult saved(ShoppingItem shoppingItem),
     @required TResult updated(ShoppingItem shoppingItem),
     @required TResult initial(ShoppingItem shoppingItem),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult saved(ShoppingItem shoppingItem),
     TResult updated(ShoppingItem shoppingItem),
     TResult initial(ShoppingItem shoppingItem),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult saved(_ItemSaved value),
     @required TResult updated(_ItemUpdated value),
     @required TResult initial(_ItemInitial value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult saved(_ItemSaved value),
     TResult updated(_ItemUpdated value),
     TResult initial(_ItemInitial value),
     @required TResult orElse(),
@@ -102,6 +113,135 @@ class _$EditItemStateCopyWithImpl<$Res>
       return _then(_value.copyWith(shoppingItem: value));
     });
   }
+}
+
+/// @nodoc
+abstract class _$ItemSavedCopyWith<$Res>
+    implements $EditItemStateCopyWith<$Res> {
+  factory _$ItemSavedCopyWith(
+          _ItemSaved value, $Res Function(_ItemSaved) then) =
+      __$ItemSavedCopyWithImpl<$Res>;
+  @override
+  $Res call({ShoppingItem shoppingItem});
+
+  @override
+  $ShoppingItemCopyWith<$Res> get shoppingItem;
+}
+
+/// @nodoc
+class __$ItemSavedCopyWithImpl<$Res> extends _$EditItemStateCopyWithImpl<$Res>
+    implements _$ItemSavedCopyWith<$Res> {
+  __$ItemSavedCopyWithImpl(_ItemSaved _value, $Res Function(_ItemSaved) _then)
+      : super(_value, (v) => _then(v as _ItemSaved));
+
+  @override
+  _ItemSaved get _value => super._value as _ItemSaved;
+
+  @override
+  $Res call({
+    Object shoppingItem = freezed,
+  }) {
+    return _then(_ItemSaved(
+      shoppingItem: shoppingItem == freezed
+          ? _value.shoppingItem
+          : shoppingItem as ShoppingItem,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ItemSaved implements _ItemSaved {
+  const _$_ItemSaved({this.shoppingItem});
+
+  @override
+  final ShoppingItem shoppingItem;
+
+  @override
+  String toString() {
+    return 'EditItemState.saved(shoppingItem: $shoppingItem)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ItemSaved &&
+            (identical(other.shoppingItem, shoppingItem) ||
+                const DeepCollectionEquality()
+                    .equals(other.shoppingItem, shoppingItem)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(shoppingItem);
+
+  @override
+  _$ItemSavedCopyWith<_ItemSaved> get copyWith =>
+      __$ItemSavedCopyWithImpl<_ItemSaved>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult saved(ShoppingItem shoppingItem),
+    @required TResult updated(ShoppingItem shoppingItem),
+    @required TResult initial(ShoppingItem shoppingItem),
+  }) {
+    assert(saved != null);
+    assert(updated != null);
+    assert(initial != null);
+    return saved(shoppingItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult saved(ShoppingItem shoppingItem),
+    TResult updated(ShoppingItem shoppingItem),
+    TResult initial(ShoppingItem shoppingItem),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved(shoppingItem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult saved(_ItemSaved value),
+    @required TResult updated(_ItemUpdated value),
+    @required TResult initial(_ItemInitial value),
+  }) {
+    assert(saved != null);
+    assert(updated != null);
+    assert(initial != null);
+    return saved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult saved(_ItemSaved value),
+    TResult updated(_ItemUpdated value),
+    TResult initial(_ItemInitial value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ItemSaved implements EditItemState {
+  const factory _ItemSaved({ShoppingItem shoppingItem}) = _$_ItemSaved;
+
+  @override
+  ShoppingItem get shoppingItem;
+  @override
+  _$ItemSavedCopyWith<_ItemSaved> get copyWith;
 }
 
 /// @nodoc
@@ -171,9 +311,11 @@ class _$_ItemUpdated implements _ItemUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult saved(ShoppingItem shoppingItem),
     @required TResult updated(ShoppingItem shoppingItem),
     @required TResult initial(ShoppingItem shoppingItem),
   }) {
+    assert(saved != null);
     assert(updated != null);
     assert(initial != null);
     return updated(shoppingItem);
@@ -182,6 +324,7 @@ class _$_ItemUpdated implements _ItemUpdated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult saved(ShoppingItem shoppingItem),
     TResult updated(ShoppingItem shoppingItem),
     TResult initial(ShoppingItem shoppingItem),
     @required TResult orElse(),
@@ -196,9 +339,11 @@ class _$_ItemUpdated implements _ItemUpdated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult saved(_ItemSaved value),
     @required TResult updated(_ItemUpdated value),
     @required TResult initial(_ItemInitial value),
   }) {
+    assert(saved != null);
     assert(updated != null);
     assert(initial != null);
     return updated(this);
@@ -207,6 +352,7 @@ class _$_ItemUpdated implements _ItemUpdated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult saved(_ItemSaved value),
     TResult updated(_ItemUpdated value),
     TResult initial(_ItemInitial value),
     @required TResult orElse(),
@@ -297,9 +443,11 @@ class _$_ItemInitial implements _ItemInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult saved(ShoppingItem shoppingItem),
     @required TResult updated(ShoppingItem shoppingItem),
     @required TResult initial(ShoppingItem shoppingItem),
   }) {
+    assert(saved != null);
     assert(updated != null);
     assert(initial != null);
     return initial(shoppingItem);
@@ -308,6 +456,7 @@ class _$_ItemInitial implements _ItemInitial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult saved(ShoppingItem shoppingItem),
     TResult updated(ShoppingItem shoppingItem),
     TResult initial(ShoppingItem shoppingItem),
     @required TResult orElse(),
@@ -322,9 +471,11 @@ class _$_ItemInitial implements _ItemInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult saved(_ItemSaved value),
     @required TResult updated(_ItemUpdated value),
     @required TResult initial(_ItemInitial value),
   }) {
+    assert(saved != null);
     assert(updated != null);
     assert(initial != null);
     return initial(this);
@@ -333,6 +484,7 @@ class _$_ItemInitial implements _ItemInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult saved(_ItemSaved value),
     TResult updated(_ItemUpdated value),
     TResult initial(_ItemInitial value),
     @required TResult orElse(),

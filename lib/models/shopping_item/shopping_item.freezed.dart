@@ -14,11 +14,16 @@ class _$ShoppingItemTearOff {
   const _$ShoppingItemTearOff();
 
 // ignore: unused_element
-  _ShoppingItem call({@required String title, int quantity, Color color}) {
+  _ShoppingItem call(
+      {@required String title,
+      int quantity,
+      Color color = const Color.fromARGB(255, 0, 170, 255),
+      bool checked = false}) {
     return _ShoppingItem(
       title: title,
       quantity: quantity,
       color: color,
+      checked: checked,
     );
   }
 }
@@ -32,6 +37,7 @@ mixin _$ShoppingItem {
   String get title;
   int get quantity;
   Color get color;
+  bool get checked;
 
   $ShoppingItemCopyWith<ShoppingItem> get copyWith;
 }
@@ -41,7 +47,7 @@ abstract class $ShoppingItemCopyWith<$Res> {
   factory $ShoppingItemCopyWith(
           ShoppingItem value, $Res Function(ShoppingItem) then) =
       _$ShoppingItemCopyWithImpl<$Res>;
-  $Res call({String title, int quantity, Color color});
+  $Res call({String title, int quantity, Color color, bool checked});
 }
 
 /// @nodoc
@@ -57,11 +63,13 @@ class _$ShoppingItemCopyWithImpl<$Res> implements $ShoppingItemCopyWith<$Res> {
     Object title = freezed,
     Object quantity = freezed,
     Object color = freezed,
+    Object checked = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed ? _value.title : title as String,
       quantity: quantity == freezed ? _value.quantity : quantity as int,
       color: color == freezed ? _value.color : color as Color,
+      checked: checked == freezed ? _value.checked : checked as bool,
     ));
   }
 }
@@ -73,7 +81,7 @@ abstract class _$ShoppingItemCopyWith<$Res>
           _ShoppingItem value, $Res Function(_ShoppingItem) then) =
       __$ShoppingItemCopyWithImpl<$Res>;
   @override
-  $Res call({String title, int quantity, Color color});
+  $Res call({String title, int quantity, Color color, bool checked});
 }
 
 /// @nodoc
@@ -91,30 +99,42 @@ class __$ShoppingItemCopyWithImpl<$Res> extends _$ShoppingItemCopyWithImpl<$Res>
     Object title = freezed,
     Object quantity = freezed,
     Object color = freezed,
+    Object checked = freezed,
   }) {
     return _then(_ShoppingItem(
       title: title == freezed ? _value.title : title as String,
       quantity: quantity == freezed ? _value.quantity : quantity as int,
       color: color == freezed ? _value.color : color as Color,
+      checked: checked == freezed ? _value.checked : checked as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_ShoppingItem implements _ShoppingItem {
-  const _$_ShoppingItem({@required this.title, this.quantity, this.color})
-      : assert(title != null);
+  const _$_ShoppingItem(
+      {@required this.title,
+      this.quantity,
+      this.color = const Color.fromARGB(255, 0, 170, 255),
+      this.checked = false})
+      : assert(title != null),
+        assert(color != null),
+        assert(checked != null);
 
   @override
   final String title;
   @override
   final int quantity;
+  @JsonKey(defaultValue: const Color.fromARGB(255, 0, 170, 255))
   @override
   final Color color;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool checked;
 
   @override
   String toString() {
-    return 'ShoppingItem(title: $title, quantity: $quantity, color: $color)';
+    return 'ShoppingItem(title: $title, quantity: $quantity, color: $color, checked: $checked)';
   }
 
   @override
@@ -127,7 +147,9 @@ class _$_ShoppingItem implements _ShoppingItem {
                 const DeepCollectionEquality()
                     .equals(other.quantity, quantity)) &&
             (identical(other.color, color) ||
-                const DeepCollectionEquality().equals(other.color, color)));
+                const DeepCollectionEquality().equals(other.color, color)) &&
+            (identical(other.checked, checked) ||
+                const DeepCollectionEquality().equals(other.checked, checked)));
   }
 
   @override
@@ -135,7 +157,8 @@ class _$_ShoppingItem implements _ShoppingItem {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(quantity) ^
-      const DeepCollectionEquality().hash(color);
+      const DeepCollectionEquality().hash(color) ^
+      const DeepCollectionEquality().hash(checked);
 
   @override
   _$ShoppingItemCopyWith<_ShoppingItem> get copyWith =>
@@ -144,7 +167,10 @@ class _$_ShoppingItem implements _ShoppingItem {
 
 abstract class _ShoppingItem implements ShoppingItem {
   const factory _ShoppingItem(
-      {@required String title, int quantity, Color color}) = _$_ShoppingItem;
+      {@required String title,
+      int quantity,
+      Color color,
+      bool checked}) = _$_ShoppingItem;
 
   @override
   String get title;
@@ -152,6 +178,8 @@ abstract class _ShoppingItem implements ShoppingItem {
   int get quantity;
   @override
   Color get color;
+  @override
+  bool get checked;
   @override
   _$ShoppingItemCopyWith<_ShoppingItem> get copyWith;
 }
