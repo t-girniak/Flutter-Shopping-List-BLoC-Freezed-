@@ -30,19 +30,28 @@ class EditItemCubit extends Cubit<EditItemState> {
     ));
   }
 
-  Future<void> titleUpdated(String text) async {
-    emit(EditItemState.updated(
-      shoppingItem: state.shoppingItem.copyWith(
-        title: text,
-      ),
-    ));
-  }
-
   Future<void> colorUpdated(Color color) async {
     emit(EditItemState.updated(
       shoppingItem: state.shoppingItem.copyWith(
         color: color,
       ),
+    ));
+  }
+
+  Future<void> increaseQuantity() async {
+    emit(EditItemState.updated(
+      shoppingItem: state.shoppingItem
+          .copyWith(quantity: (state.shoppingItem?.quantity ?? 1) + 1),
+    ));
+  }
+
+  Future<void> decreaseQuantity() async {
+    if ((state.shoppingItem?.quantity ?? 1) <= 1) {
+      return;
+    }
+    emit(EditItemState.updated(
+      shoppingItem: state.shoppingItem
+          .copyWith(quantity: (state.shoppingItem?.quantity ?? 1) - 1),
     ));
   }
 }

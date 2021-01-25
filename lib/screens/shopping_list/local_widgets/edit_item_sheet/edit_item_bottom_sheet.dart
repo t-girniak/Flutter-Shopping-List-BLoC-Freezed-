@@ -49,6 +49,25 @@ void displayBottomSheet(BuildContext context) {
                     ),
                     SizedBox(height: 24),
                     Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed: () => cubit.decreaseQuantity(),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          '${state.shoppingItem.quantity}',
+                          style: Theme.of(context).textTheme.subtitle2,
+                        ),
+                        SizedBox(width: 8),
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () => cubit.increaseQuantity(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 24),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(

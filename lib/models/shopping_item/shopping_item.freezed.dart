@@ -16,7 +16,7 @@ class _$ShoppingItemTearOff {
 // ignore: unused_element
   _ShoppingItem call(
       {@required String title,
-      int quantity,
+      int quantity = 1,
       Color color = const Color.fromARGB(255, 0, 170, 255),
       bool checked = false}) {
     return _ShoppingItem(
@@ -114,15 +114,17 @@ class __$ShoppingItemCopyWithImpl<$Res> extends _$ShoppingItemCopyWithImpl<$Res>
 class _$_ShoppingItem implements _ShoppingItem {
   const _$_ShoppingItem(
       {@required this.title,
-      this.quantity,
+      this.quantity = 1,
       this.color = const Color.fromARGB(255, 0, 170, 255),
       this.checked = false})
       : assert(title != null),
+        assert(quantity != null),
         assert(color != null),
         assert(checked != null);
 
   @override
   final String title;
+  @JsonKey(defaultValue: 1)
   @override
   final int quantity;
   @JsonKey(defaultValue: const Color.fromARGB(255, 0, 170, 255))

@@ -8,7 +8,7 @@ part 'shopping_item.freezed.dart';
 abstract class ShoppingItem with _$ShoppingItem {
   const factory ShoppingItem({
     @required String title,
-    int quantity,
+    @Default(1) int quantity,
     @Default(Color.fromARGB(255, 0, 170, 255)) Color color,
     @Default(false) bool checked,
   }) = _ShoppingItem;

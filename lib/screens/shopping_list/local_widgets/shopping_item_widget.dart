@@ -50,7 +50,7 @@ class _ShoppingItemWidgetState extends State<ShoppingItemWidget> {
                 ),
                 SizedBox(width: 8),
                 Text(
-                  widget.shoppingItem.title,
+                  '${widget.shoppingItem.title} x ${widget.shoppingItem.quantity}',
                   style: widget.shoppingItem.checked
                       ? Theme.of(context).textTheme.bodyText1.merge(TextStyle(
                             decoration: TextDecoration.lineThrough,
