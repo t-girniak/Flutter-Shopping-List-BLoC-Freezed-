@@ -15,33 +15,41 @@ class AppThemes {
   static final ThemeData darkTheme = ThemeData(
     primarySwatch: generateMaterialColor(AppColors.darkGrey),
     primaryColor: AppColors.darkGrey,
-    accentColor: AppColors.mustard,
+    unselectedWidgetColor: AppColors.lightBlue,
+    accentColor: AppColors.lightBlue,
+    cursorColor: AppColors.lightBlue,
+    focusColor: AppColors.lightBlue,
+    toggleableActiveColor: AppColors.lightBlue,
+    splashColor: AppColors.lightBlue,
     backgroundColor: AppColors.black,
     brightness: Brightness.dark,
+    selectedRowColor: AppColors.lightBlue,
+    buttonColor: AppColors.lightBlue,
+    indicatorColor: AppColors.lightBlue,
     canvasColor: AppColors.black,
     cardColor: AppColors.darkGrey,
     textTheme: TextTheme(
       headline1: TextStyle(
         fontSize: 52.0,
         fontWeight: FontWeight.bold,
-        color: AppColors.mustard,
+        color: AppColors.lightBlue,
       ),
       headline6: TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
-          color: AppColors.mustard),
+          color: AppColors.lightBlue),
       bodyText2: TextStyle(
         fontSize: 14.0,
         color: Colors.white,
       ),
       bodyText1: TextStyle(
         fontSize: 14.0,
-        color: AppColors.mustard,
+        color: AppColors.lightBlue,
       ),
       subtitle2: TextStyle(
         fontSize: 18.0,
         fontWeight: FontWeight.bold,
-        color: AppColors.mustard,
+        color: AppColors.lightBlue,
       ),
     ),
   );
