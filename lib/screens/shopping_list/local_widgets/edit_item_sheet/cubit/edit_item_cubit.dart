@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_list/models/hive/hive_core.dart';
 import 'package:flutter_shopping_list/models/hive/shopping_item/shopping_item_hive.dart';
+import 'package:flutter_shopping_list/models/shopping_item/shopping_item.dart';
 import 'package:get_it/get_it.dart';
 import 'edit_item_state.dart';
 
@@ -12,7 +13,14 @@ class EditItemCubit extends Cubit<EditItemState> {
   final TextEditingController titleController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  EditItemCubit() : super(EditItemState.initial());
+  EditItemCubit({
+    ShoppingItem shoppingItem,
+  }) : super(EditItemState.initial()) {
+    if (shoppingItem != null) {
+      titleController.text = shoppingItem.title;
+      emit(EditItemState.initial(shoppingItem: shoppingItem));
+    }
+  }
 
   Future<void> saveItem() async {
     if (!formKey.currentState.validate()) {

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shopping_list/models/shopping_item/shopping_item.dart';
 import 'package:flutter_shopping_list/screens/shopping_list/cubit/shopping_list_cubit/shopping_list_cubit.dart';
 import 'package:flutter_shopping_list/screens/shopping_list/local_widgets/edit_item_sheet/local_widgets/color_picker.dart';
 import 'package:flutter_shopping_list/utils/validators/basic_validator.dart';
@@ -8,13 +9,20 @@ import 'package:flutter_shopping_list/utils/validators/basic_validator.dart';
 import 'cubit/edit_item_cubit.dart';
 import 'cubit/edit_item_state.dart';
 
-void displayBottomSheet(BuildContext context) {
+void displayBottomSheet(
+  BuildContext context, {
+  ShoppingItem shoppingItem,
+}) {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
     builder: (context) {
       return BlocProvider<EditItemCubit>(
-        create: (BuildContext context) => EditItemCubit(),
+        create: (BuildContext context) {
+          return shoppingItem != null
+              ? EditItemCubit(shoppingItem: shoppingItem)
+              : EditItemCubit();
+        },
         child: BlocConsumer<EditItemCubit, EditItemState>(
           listener: (BuildContext context, state) {
             state.when(
